@@ -33,9 +33,7 @@ add product in cart with pinia
 step five
 ----------------------------------------------------------------------------------------------------------------
 create page checkout
-filter products in main page from search
 
 
-create menu and login & sign up 
 
 

@@ -14,19 +14,26 @@ export const useCartStore = defineStore('cart', {
   },
 
   actions: {
-    addProduct(product) {
-      const existing = this.cart.find(i => i.id === product.id)
-      if(existing) {
-        existing.quantity = (existing.quantity ?? 1) + 1
-      } else {
-        this.cart.push({
-          ...product,
-          quantity: 1,
-          price: product.price ?? 0
-        })
-      }
-      this.saveCart()
-    },
+addProduct(product) {
+  // Check if product already exists in cart
+  const existing = this.cart.find(i => i.id === product.id)
+
+  if (existing) {
+    // Product already in cart → do nothing or show alert
+    alert('⚠️ This product is already in your cart.')
+    return
+  }
+
+  // Add new product with quantity = 1
+  this.cart.push({
+    ...product,
+    quantity: 1,
+    price: product.price ?? 0
+  })
+
+  this.saveCart()
+} ,
+
 
     saveCart() {
       if (process.client) {
