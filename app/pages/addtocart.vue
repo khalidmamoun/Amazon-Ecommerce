@@ -100,11 +100,7 @@
 import { computed } from 'vue'
 import { useCartStore } from '~/stores/cart.js'
 
-/**
- * Cart Page
- * - Fully safe price calculation
- * - Tailwind styling
- */
+
 const cartStore = useCartStore()
 cartStore.loadCart()
 
