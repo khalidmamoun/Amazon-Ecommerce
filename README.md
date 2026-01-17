@@ -33,6 +33,7 @@ add product in cart with pinia
 step five
 ----------------------------------------------------------------------------------------------------------------
 create page checkout
+filter products in search 
 
 
 
