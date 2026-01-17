@@ -1,0 +1,41 @@
+
+step one 
+--------------------
+create all file projact 
+create Nav and Footer global 
+----------------------------
+
+
+
+step two 
+-------------------------------------------
+show all products in Main layout using axios 
+-------------------------------------------------------
+
+
+
+step three 
+--------------------------------------------------------------------
+show page product details with [id]
+--------------------------------------------------------------------------------
+
+
+
+step four 
+------------------------------------------------------------------------------------------
+create page add to cart 
+create bottom counter inc and dec 
+add product in cart with pinia 
+---------------------------------------------------------------------------------------------------
+
+
+
+step five
+----------------------------------------------------------------------------------------------------------------
+create page checkout
+filter products in main page from search
+
+
+create menu and login & sign up 
+
+
