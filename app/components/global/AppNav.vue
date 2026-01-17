@@ -21,12 +21,14 @@
           v-if="searchQuery"
           class="absolute top-full left-0 right-0 bg-white text-black rounded-lg shadow-lg mt-2 max-h-80 overflow-y-auto z-50"
         >
+          <!-- Products Found -->
           <template v-if="filteredProducts.length">
             <NuxtLink
               v-for="product in filteredProducts"
               :key="product.id"
               :to="`/product/${product.id}`"
               class="flex items-center gap-3 p-3 hover:bg-gray-100 transition"
+              @click="searchQuery = ''"
             >
               <img
                 :src="product.image || '/images/default.png'"
@@ -35,13 +37,14 @@
               />
               <div class="flex-1">
                 <p class="text-sm font-semibold text-gray-900 truncate">
-                  <span v-html="highlight(product.title)"></span>
+                  {{ product.title }}
                 </p>
                 <p class="text-xs text-gray-500">{{ formatPrice(product.price) }} EGP</p>
               </div>
             </NuxtLink>
           </template>
 
+          <!-- No Products Found -->
           <div v-else class="p-3 text-gray-500 text-sm">
             No products found
           </div>
@@ -75,14 +78,7 @@ const allProducts = ref([])
 
 const formatPrice = (value) => Number(value).toFixed(2)
 
-// Highlight search term in results
-const highlight = (text) => {
-  if (!searchQuery.value) return text
-  const query = searchQuery.value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
-  return text.replace(new RegExp(`(${query})`, 'gi'), '<span class="bg-yellow-200">$1</span>')
-}
-
-// Fetch all products once
+// Fetch all products once on mounted
 const fetchProducts = async () => {
   try {
     const data = await $fetch('https://fakestoreapi.com/products')
@@ -94,7 +90,7 @@ const fetchProducts = async () => {
 }
 onMounted(fetchProducts)
 
-// Filter products client-side
+// Filter products client-side (case-insensitive)
 watch(searchQuery, (q) => {
   if (!q) {
     filteredProducts.value = []
